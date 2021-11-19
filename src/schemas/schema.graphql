@@ -423,6 +423,9 @@ extend type Query {
     "Optional text search query"
     searchQuery: String,
 
+    "Optional productType query"
+    productType: String,
+
     "Return only results that come after this cursor. Use this with `first` to specify the number of results to return."
     after: ConnectionCursor,
 

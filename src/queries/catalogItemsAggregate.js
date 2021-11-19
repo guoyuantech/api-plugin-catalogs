@@ -20,7 +20,8 @@ export default async function catalogItemsAggregate(context, {
   catalogBooleanFilters,
   searchQuery,
   shopIds,
-  tagId
+  tagId,
+  productType
 } = {}) {
   const { collections } = context;
   const { Catalog, Tags } = collections;
@@ -43,6 +44,8 @@ export default async function catalogItemsAggregate(context, {
       $search: _.escapeRegExp(searchQuery)
     };
   }
+
+  if (productType) selector["product.productType"] = productType;
 
   return arrayJoinPlusRemainingQuery({
     arrayFieldPath: "featuredProductIds",
